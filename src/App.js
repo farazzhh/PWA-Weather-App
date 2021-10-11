@@ -1,25 +1,37 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { useState } from "react";
+import DataFetch from "./components/dataFetch/DataFetch.jsx";
 
-function App() {
+const App = () => {
+  const [query, setQuery] = useState("");
+  const [city, setCity] = useState();
+
+  const search = async (e) => {
+    if (e.key === "Enter") {
+      const data = await DataFetch('SHIRAZ');
+      setCity(data);
+      console.log(data.weather);
+    }
+  };
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className="container">
+        <input
+          type="text"
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
+          onKeyPress={(e) => search(e)}
+        />
+        {city && (
+          <div className="information">
+            <img src={`https://openweathermap.org/img/wn/${city.weather[0].icon}@2x.png`} alt="" />
+            <h2>{city.name}</h2>
+            <span>{city.main.temp}</span>
+          </div>
+        )}
+      </div>
     </div>
   );
-}
+};
 
 export default App;
