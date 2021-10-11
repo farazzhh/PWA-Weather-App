@@ -12,8 +12,10 @@ place-items: center;
 }
 
 .container{
-    background-color: gray;
+    background-color: whitesmoke;
     padding: 1rem;
+    box-shadow: 0 0 10px rgba(0,0,0,0.4);
+    border-radius: 10px;
 }
 .information{
     display: grid;
