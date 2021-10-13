@@ -1,48 +1,63 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable jsx-a11y/img-redundant-alt */
 import "./App.css";
-import { useState } from "react";
+import { useState, useMemo, useEffect } from "react";
 import DataFetch from "./components/dataFetch/DataFetch.jsx";
+import useAsyncHook from "./components/dataFetch/DataFetch.jsx";
+import Weather from "./Weather";
 
 const App = () => {
   const [query, setQuery] = useState("");
+  const [err, setErr] = useState(false);
   const [city, setCity] = useState();
+  const [weather, setweather] = useState();
 
-  const search = async (e) => {
+  useEffect(() => {
+    const fetching = async () => {
+      const res = await DataFetch(city);
+
+      if (res.cod == "200") {
+            setweather(res);
+            return setErr(false);
+        } else  {
+          console.log("error", res.cod);
+          return setErr(true);
+        }
+    };
+    fetching();
+    // console.log("weather:", weather);
+    // console.log("error:", err);
+  }, [city]);
+
+  
+  const search = (e) => {
     if (e.key === "Enter") {
-      const data = await DataFetch('SHIRAZ');
-      setCity(data);
-      console.log(data);
+      setCity(query);
     }
   };
+
   return (
     <div className="App">
-      <img src="./image/bg.jpg" alt="background image" />
-      <div className="container">
-        <input
-          type="text"
-          value={query}
-          onChange={(e) => setQuery(e.target.value)}
-          onKeyPress={(e) => search(e)}
-        />
-        {city && (
-          <div className="information">
-            <h4>{city.name}</h4>
-            <img
-              src={`https://openweathermap.org/img/wn/${city.weather[0].icon}@2x.png`}
-              alt=""
-            />
-            <h2>
-              {city.main.temp}
-              <sup>
-                <small>&deg;C</small>
-              </sup>
-            </h2>
-            <h4>{city.weather[0].main}</h4>
-          </div>
-        )}
-      </div>
+      <div className="App_container">
+      <input
+        type="text"
+        value={query}
+        onChange={(e) => setQuery(e.target.value)}
+        onKeyPress={(e) => search(e)}
+        placeholder="City..."
+      />
+      {weather &&
+        <Weather weather={weather} />
+        }
+        </div>
     </div>
   );
+};
+
+const Func = (query) => {
+  const data = DataFetch(query);
+  console.log(data);
+  return data;
 };
 
 export default App;
