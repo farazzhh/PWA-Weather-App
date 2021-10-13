@@ -1,14 +1,10 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-/* eslint-disable jsx-a11y/img-redundant-alt */
 import "./App.css";
-import { useState, useMemo, useEffect } from "react";
+import { useState, useEffect } from "react";
 import DataFetch from "./components/dataFetch/DataFetch.jsx";
-import useAsyncHook from "./components/dataFetch/DataFetch.jsx";
 import Weather from "./Weather";
 
 const App = () => {
   const [query, setQuery] = useState("");
-  const [err, setErr] = useState(false);
   const [city, setCity] = useState();
   const [weather, setweather] = useState();
 
@@ -16,20 +12,15 @@ const App = () => {
     const fetching = async () => {
       const res = await DataFetch(city);
 
+      // when res.cod = 200 so Fetch Responsed with no error
       if (res.cod == "200") {
-            setweather(res);
-            return setErr(false);
-        } else  {
-          console.log("error", res.cod);
-          return setErr(true);
-        }
+        return setweather(res);
+      }
     };
     fetching();
-    // console.log("weather:", weather);
-    // console.log("error:", err);
   }, [city]);
 
-  
+  // Looking for pressing Enter key
   const search = (e) => {
     if (e.key === "Enter") {
       setCity(query);
@@ -39,17 +30,15 @@ const App = () => {
   return (
     <div className="App">
       <div className="App_container">
-      <input
-        type="text"
-        value={query}
-        onChange={(e) => setQuery(e.target.value)}
-        onKeyPress={(e) => search(e)}
-        placeholder="City..."
-      />
-      {weather &&
-        <Weather weather={weather} />
-        }
-        </div>
+        <input
+          type="text"
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
+          onKeyPress={(e) => search(e)}
+          placeholder="City..."
+        />
+        {weather && <Weather weather={weather} />}
+      </div>
     </div>
   );
 };
