@@ -13,7 +13,7 @@ const App = () => {
       const res = await DataFetch(city);
 
       // when res.cod = 200 so Fetch Responsed with no error
-      if (res.cod == "200") {
+      if (res.cod === "200") {
         return setweather(res);
       }
     };
@@ -43,10 +43,5 @@ const App = () => {
   );
 };
 
-const Func = (query) => {
-  const data = DataFetch(query);
-  console.log(data);
-  return data;
-};
 
 export default App;
