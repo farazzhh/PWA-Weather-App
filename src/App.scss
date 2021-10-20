@@ -3,7 +3,7 @@
   padding: 0;
   box-sizing: border-box;
   font-family: "Poppins", sans-serif;
-  transition: all 0.2 ease-out;
+  transition: all 0.5 ease-out;
 }
 
 .App {
@@ -12,21 +12,22 @@
   display: grid;
   place-items: center;
   position: relative;
-
   .App_container {
     display: grid;
     place-items: center;
     row-gap: 10px;
+    width: 255px;
   }
   &__input {
     text-align: center;
     height: 60px;
-
+    width: 100%;
     div {
       display: flex;
       place-items: center;
       input {
         border: none;
+        width: 100%;
         outline: none;
         font-size: 14px;
         border-radius: 5px;
@@ -48,13 +49,13 @@
         background-color: rgb(129, 184, 129);
         color: white;
         height: 30px;
-        width: 60px;
+        width: 80px;
         margin-left: 10px;
         border-radius: 5px;
         cursor: pointer;
-        -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
-        -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
-        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+        -webkit-box-shadow: 0 0px 3px rgba(0, 0, 0, 0.4);
+        -moz-box-shadow: 0 0px 3px rgba(0, 0, 0, 0.4);
+        box-shadow: 0 0px 3px rgba(0, 0, 0, 0.4);
         &:hover {
           background-color: rgb(66, 184, 66);
         }

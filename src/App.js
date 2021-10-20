@@ -17,7 +17,7 @@ const App = () => {
        setNotFound(true);
         setTimeout(() => {
           setNotFound(false);
-        }, 1000);
+        }, 1500);
       }
       if (res.cod === 200) {
         return setweather(res);
