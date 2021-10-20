@@ -1,6 +1,11 @@
 {
   "short_name": "PWA Weather App",
   "name": "Farazzhh PWA weather App",
+  "background_color": "#555758",
+  "display": "standalone",
+  "orientation": "portrait",
+  "scope": "/",
+  "start_url": "/",
   "icons": [
     {
       "src": "/image/icon_512.png",
@@ -17,11 +22,7 @@
       "src": "/image/icon_912.png",
       "sizes": "196x196",
       "type": "image/png",
-      "purpose": "maskable"
+      "purpose": "any maskable"
     }
-  ],
-  "start_url": ".",
-  "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+  ]
 }
