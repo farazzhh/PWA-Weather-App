@@ -10,7 +10,6 @@ const DataFetch = async (city) => {
   } else {
     result = { cod: "400" };
   }
-
   return result;
 };
 

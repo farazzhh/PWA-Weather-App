@@ -1,7 +1,6 @@
 import React from 'react'
 
 const Weather = ({weather}) => {
-    console.log(weather);
     return (
       <div>
         <div className="container">

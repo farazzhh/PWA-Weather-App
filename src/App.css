@@ -4,10 +4,12 @@
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   font-family: "Poppins", sans-serif;
+  -webkit-transition: all 0.2 ease-out;
+  transition: all 0.2 ease-out;
 }
 
 .App {
-  width: 100%;
+  width: 100vw;
   min-height: 100vh;
   display: -ms-grid;
   display: grid;
@@ -19,10 +21,22 @@
   display: -ms-grid;
   display: grid;
   place-items: center;
-  row-gap: 50px;
+  row-gap: 10px;
 }
 
-.App input {
+.App__input {
+  text-align: center;
+  height: 60px;
+}
+
+.App__input div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  place-items: center;
+}
+
+.App__input div input {
   border: none;
   outline: none;
   font-size: 14px;
@@ -37,20 +51,47 @@
   background-color: rgba(255, 255, 255, 0.3);
 }
 
-.App input::-webkit-input-placeholder {
+.App__input div input::-webkit-input-placeholder {
   color: rgba(128, 128, 128, 0.493);
 }
 
-.App input:-ms-input-placeholder {
+.App__input div input:-ms-input-placeholder {
   color: rgba(128, 128, 128, 0.493);
 }
 
-.App input::-ms-input-placeholder {
+.App__input div input::-ms-input-placeholder {
   color: rgba(128, 128, 128, 0.493);
 }
 
-.App input::placeholder {
+.App__input div input::placeholder {
   color: rgba(128, 128, 128, 0.493);
+}
+
+.App__input div button {
+  border: none;
+  background-color: #81b881;
+  color: white;
+  height: 30px;
+  width: 60px;
+  margin-left: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+          box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+}
+
+.App__input div button:hover {
+  background-color: #42b842;
+}
+
+.App__input p {
+  background-color: red;
+  margin-top: 2px;
+  font-weight: 300;
+  font-size: 14px;
+  border-radius: 5px;
+  -webkit-box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.5);
+          box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.5);
 }
 
 .App .container {
