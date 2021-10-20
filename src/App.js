@@ -7,14 +7,14 @@ const App = () => {
   const [query, setQuery] = useState("");
   const [city, setCity] = useState();
   const [weather, setweather] = useState();
-  const [notFound,setNotFound] = useState(false)
+  const [notFound, setNotFound] = useState(false);
   useEffect(() => {
     const fetching = async () => {
       const res = await DataFetch(city);
       // when res.cod = 200 so Fetch Responsed with no error
-      
+
       if (res.cod === "404") {
-       setNotFound(true);
+        setNotFound(true);
         setTimeout(() => {
           setNotFound(false);
         }, 1500);
@@ -37,25 +37,28 @@ const App = () => {
     <div className="App">
       <div className="App_container">
         <div className="App__input">
-          <div>           
-        <input
-          type="text"
-          value={query}
-          onChange={(e) => setQuery(e.target.value)}
-          onKeyPress={(e) => search(e)}
-          placeholder="City..."
-          />
-          <button onClick={()=>{ query && setCity(query)}}>Enter</button>
+          <div>
+            <input
+              type="text"
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+              onKeyPress={(e) => search(e)}
+              placeholder="City..."
+            />
+            <button
+              onClick={() => {
+                query && setCity(query);
+              }}
+            >
+              Enter
+            </button>
           </div>
-          {notFound &&
-          <p>Not Found !</p>
-          }
+          {notFound && <p>Not Found !</p>}
         </div>
         {weather && <Weather weather={weather} />}
       </div>
     </div>
   );
 };
-
 
 export default App;
